@@ -1,5 +1,4 @@
 import React, {useRef, useState, useEffect} from 'react';
-import logo from './logo.svg';
 import './App.css';
 import styled from 'styled-components';
 
@@ -18,7 +17,7 @@ grid-template-columns: repeat(40, 2.5%);
 const Cell = styled.div`
 height: 15px;
 width: 15px;
-// border: solid pink 1px
+border: dotted pink 1px
 `;
 
 let interval;
@@ -45,8 +44,6 @@ function App() {
   const [mode, setMode] = useState('TOGGLE');
   const gridRef = useRef();
   gridRef.current = gridData;
-
-
 
   const gridStep = () => {
     // [vertical, horizontal]
@@ -268,63 +265,100 @@ function App() {
       default:
         break;
     }
-  }
+  };
 
 
   return (
     <div className="App">
-      <p>
-        Conway's Game of Life
-      </p>
-      <Gridcontainer>
-        {gridData.map((item, i) => {
-          return item.map((subItem, j) => {
-            // return <Cell className = {subItem ? 'filled' : undefined} onClick = {(e) => fill(i, j)}>
-            return <Cell className = {subItem ? 'filled' : undefined} onClick = {(e) => modeHandler(i, j)}>
-            {/* {subItem ? subItem : 0} */}
-            </Cell>
-          })
-        })}
-      </Gridcontainer>
-      <p>
-        {`Generation: ${gen}`}
-      </p>
-      <div>
-        <button onClick = {start}>
-          Start
-        </button>
-        <button onClick = {stop}>
-          Stop
-        </button>
-        <button onClick = {gridStep}>
-          Step
-        </button>
-        <button onClick = {clearGrid}>
-          Clear
-        </button>
-        <button onClick = {randomFill}>
-          Random
-        </button>
-        <button onClick = {() => {console.log(gridData)}}>
-          log
-        </button>
-      </div>
-      <p>
-        Fill Mode: {`${mode}`}
-      </p>
-      <div>
-        <button onClick = {() => {setMode('TOGGLE')}}>
-          Toggle
-        </button>
-        <button onClick = {() => {setMode('BORDER_FILL')}}>
-          Border Fill
-        </button>
-        <button onClick = {() => {setMode('GLIDER')}}>
-          Glider
-        </button>
-        <button onClick = {() => {setMode('EXPLODER')}}>
-          Exploder
-        </button>
+
+      <h1>
+        John Conway's Game of Life
+      </h1>
+      <div className = 'flexRow'>
+        <div className = 'gameContainer'>
+
+          <div className = 'gameGrid'>
+
+            <Gridcontainer>
+              {gridData.map((item, i) => {
+                return item.map((subItem, j) => {
+                  return <Cell className = {subItem ? 'filled' : undefined} onClick = {(e) => modeHandler(i, j)}>
+                  </Cell>
+                })
+              })}
+            </Gridcontainer>
+
+          </div>
+          <div className = 'flexRow'>
+
+          <div className = 'controls'>
+            <p>
+              {`Generation: ${gen}`}
+            </p>
+            <button onClick = {start}>
+              Start
+            </button>
+            <button onClick = {stop}>
+              Stop
+            </button>
+            <button onClick = {gridStep}>
+              Step
+            </button>
+            <button onClick = {clearGrid}>
+              Clear
+            </button>
+            <button onClick = {randomFill}>
+              Random
+            </button>
+          </div>
+          <div className = 'controls fills'>
+            <p>
+              Fill Mode: {`${mode}`}
+            </p>
+            <button onClick = {() => {setMode('TOGGLE')}}>
+              Toggle
+            </button>
+            <button onClick = {() => {setMode('BORDER_FILL')}}>
+              Border Fill
+            </button>
+            <button onClick = {() => {setMode('GLIDER')}}>
+              Glider
+            </button>
+            <button onClick = {() => {setMode('EXPLODER')}}>
+              Exploder
+            </button>
+          </div>
+          </div>
+        </div>
+        <div className = 'info'>
+          <div className = 'about'>
+            <h3>
+              About
+            </h3>
+            <p>
+              John Conway's Game of Life is an example of a <a href = 'https://www.conwaylife.com/wiki/Cellular_automaton'>cellular automaton.</a> 
+              Cells displayed on the grid can either be alive or dead, and are influenced by their <a href = 'https://en.wikipedia.org/wiki/Moore_neighborhood'>neighborhood,</a> or the cells surrounding them. 
+              The way in which they are influenced is described by a set of rules, producing a new set of data, or generation, to be displayed.
+            </p>
+            <p>
+              The game is a <a href = 'https://en.wikipedia.org/wiki/Zero-player_game'>zero-player game,</a> so all that the "player" has to do is set the initial state, and watch as the patterns evolve according to the rules of life.
+            </p>
+            <p>
+              In this simulation, we're holding two datasets: the current grid, and the next grid to be displayed. The next grid comes from performing checks on every single cell in the current grid to decide if it will be alive or dead in the next iteration, and the old grid is then swapped with the new grid as we step through the generations.
+              <br/>The edges of the grid are treated as permanently dead cells, and do not wrap around to the other side of the grid. If you want your cells to stay alive, try to keep things closer to the middle.
+            </p>
+          </div>
+          <div className = 'rules'>
+
+            <h3>
+            Rules
+            </h3>
+
+            <li>If a live cell has less than 2 or more than 3 neighbors, it dies.</li>
+            <li>If a live cell has 2 or 3 neighbors, it lives on to the next generation.</li>
+            <li>If a dead cell has 3 live neighbors, it will be brought to life.</li>
+          </div>
+        </div>
       </div>
     </div>
   );

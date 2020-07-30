@@ -2,6 +2,11 @@
   text-align: center;
   /* background-color: black; */
   color: white;
+  /* border: solid white 1px; */
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .filled {
@@ -10,6 +15,59 @@
 
 p {
   margin: 0;
+}
+
+.gameContainer {
+  /* border: solid white 1px; */
+  /* max-width: 70% */
+  width: 50%;
+}
+
+.controls {
+  margin: 2% 2%;
+}
+
+.flexRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.about {
+  /* max-width: 100%; */
+  padding: 0% 5%;
+  /* border: solid grey 1px; */
+}
+
+.about p {
+  text-align: left;
+  margin-bottom: 2%;
+}
+
+a {
+  color: pink;
+  text-decoration: none;
+}
+
+a:hover{
+  text-decoration: underline;
+}
+
+.rules {
+  /* max-width: 100%; */
+  padding: 5% 0%;
+  display: flex-column;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+  /* border: solid red 1px; */
+}
+
+ul {
+  justify-self: left;
+  text-align: left;
+  /* border: solid white 1px; */
+  width: 70%;
 }
 
 /* .App-logo {
