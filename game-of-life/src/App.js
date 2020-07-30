@@ -336,7 +336,7 @@ function App() {
               About
             </h3>
             <p>
-              John Conway's Game of Life is an example of a <a href = 'https://www.conwaylife.com/wiki/Cellular_automaton'>cellular automaton.</a> 
+              John Conway's Game of Life is an example of a <a href = 'https://www.conwaylife.com/wiki/Cellular_automaton'>cellular automaton. </a> 
               Cells displayed on the grid can either be alive or dead, and are influenced by their <a href = 'https://en.wikipedia.org/wiki/Moore_neighborhood'>neighborhood,</a> or the cells surrounding them. 
               The way in which they are influenced is described by a set of rules, producing a new set of data, or generation, to be displayed.
             </p>
