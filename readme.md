@@ -1,4 +1,4 @@
-#Deploy
+# Deploy
 Check out the live app here: https://biskoi.github.io/CS-Build-Week-1/
 
 # About
